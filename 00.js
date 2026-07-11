@@ -1,4 +1,4 @@
-let texto = "Hola a";
+let texto = "Holaaaaaaaa estooo pruebaaaa";
 let totalCarac = 0;
 
 // let textoTotal = texto.length();
@@ -33,6 +33,29 @@ function vocalesTolal(texto) {
   }
   return vocales.length;
 }
+
+let contCaract = {};
+contarCaracteres(texto);
+
+for (const key in contCaract) {
+  console.log(key, contCaract[key]);
+}
+
+function contarCaracteres(texto) {
+  texto = texto.trim().toLowerCase().replaceAll(" ", "");
+
+  for (const key of texto.trim().replaceAll(" ", "").toLowerCase()) {
+    contCaract[key] = (contCaract[key] || 0) + 1;
+  }
+}
+
+console.log(contCaract);
+
+// for (const key in texto.trim()) {
+//   if (object.hasOwnProperty(key)) {
+//     const element = object[key];
+//   }
+// }
 
 // function contarCaracteres(texto) {
 //   texto = texto.trim();
