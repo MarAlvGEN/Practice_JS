@@ -1,3 +1,5 @@
+// TODO: Comentarios
+
 import promptSync from "prompt-sync";
 const prompt = promptSync({ sigint: true });
 
@@ -6,9 +8,7 @@ let texto = prompt("Escribe algo: ");
 // MAIN
 analizarCadena(texto);
 
-// Funciones
-
-// Parte 0 : Requisito analizar cadena
+// Requisito: Función analizarCadena
 function analizarCadena(texto) {
   // Utilizo replaceAll para poder quitar todos los espacios del texto, luego llamo a la propiedad lenght para contar la cantidad de caractares;
   let textoLenSinEspacios = texto.replaceAll(" ", "").length;
