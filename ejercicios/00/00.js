@@ -23,7 +23,6 @@ function analizarCadena(texto) {
     }
   }
 
-  textoAux = texto;
   let textoRepetido = {};
   let charMasRepetido;
   let charAux = 0;
