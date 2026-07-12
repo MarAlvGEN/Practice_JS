@@ -1,66 +1,53 @@
-let texto = "a bb cc ddd eee ffff";
+import promptSync from "prompt-sync";
+const prompt = promptSync({ sigint: true });
 
-let totalCarac = contarCaracteres(texto);
-
-var vocales = [];
-vocalesTolal = vocalesTolal(texto);
-
-let caracRepetidos = conCaracteresRepetidos(texto);
+let texto = prompt("Escribe algo: ");
 
 // MAIN
-
-console.log(totalCarac);
-console.log(vocalesTolal);
-
-console.log(`--Cantidad de Caracteres en "${texto}"`);
-for (const key in caracRepetidos) {
-  console.log(`${key}: ${caracRepetidos[key]} `);
-}
+analizarCadena(texto);
 
 // Funciones
 
-// Parte I: Esta funcion debe contar la cantidad de caracteres
-// En esta ocasion es recibe un texto, se pasa a toLowerCase y elimina todos los textos en blanco
-// retorna la total contado
+// Parte 0 : Requisito analizar cadena
+function analizarCadena(texto) {
+  // Utilizo replaceAll para poder quitar todos los espacios del texto, luego llamo a la propiedad lenght para contar la cantidad de caractares;
+  let textoLenSinEspacios = texto.replaceAll(" ", "").length;
 
-function contarCaracteres(texto) {
-  let textoCont = 0;
-  textoAux = texto.replaceAll(" ", "");
+  let vocales = ["a", "e", "i", "o", "u"];
+  let totalVocales = 0;
+  let textoAux = texto.replaceAll(" ", "").toLowerCase();
 
-  for (let i = 0; i < textoAux.length; i++) {
-    textoCont++;
-  }
-  return `--CANTIDAD CARACTERES EN: "${texto}"--\nCon espacios: "${texto.length}"\nSin espacios: "${textoCont}"`;
-}
-
-// Parte II: Esta funcion debe contar la cantidad de vocales que tiene el texto ademas quiero que muestre el proceso con un console.log()
-function vocalesTolal(texto) {
-  textoAux = texto.toLowerCase();
-
-  for (let i = 0; i < textoAux.length; i++) {
-    if (textoAux[i] == "a") {
-      vocales.push(textoAux[i]);
-    } else if (textoAux[i] == "e") {
-      vocales.push(textoAux[i]);
-    } else if (textoAux[i] == "i") {
-      vocales.push(textoAux[i]);
-    } else if (textoAux[i] == "o") {
-      vocales.push(textoAux[i]);
-    } else if (textoAux[i] == "u") {
-      vocales.push(textoAux[i]);
+  for (const iterator of textoAux) {
+    if (vocales.includes(iterator)) {
+      totalVocales++;
     }
   }
-  return `--CANTIDAD VOCALES-- en "${texto}"\nTotal: "${vocales.length}"`;
-}
 
-// Parte III: Esta funcion debe contar la cantidad de veces que los caracteres se repiten
+  textoAux = texto;
+  let textoRepetido = {};
+  let charMasRepetido;
+  let charAux = 1;
+  for (const iterator of texto) {
+    textoRepetido[iterator] = (textoRepetido[iterator] || 0) + 1;
 
-function conCaracteresRepetidos(texto) {
-  let caracRepetidos = {};
-  let textoAux = texto.replaceAll(" ", "");
-
-  for (const key of textoAux) {
-    caracRepetidos[key] = (caracRepetidos[key] || 0) + 1;
+    if (textoRepetido[iterator] > charAux) {
+      charAux = textoRepetido[iterator];
+      charMasRepetido = iterator;
+    }
   }
-  return caracRepetidos;
+
+  // Requisito
+  console.log(
+    `El texto (Sin espacios) tiene un total de ${textoLenSinEspacios} caractares`,
+  );
+  console.log(`El texto tiene un total de ${totalVocales} vocales`);
+
+  if (charAux == 1) {
+    console.log("No hubo repetidos");
+  } else {
+    console.log("SE DESTINGUEN MAYUSCULAS");
+    console.log(
+      `El caracter más repetido es "${charMasRepetido}" con un total de "${charAux}" repeticiones`,
+    );
+  }
 }
