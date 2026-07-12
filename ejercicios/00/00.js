@@ -1,4 +1,4 @@
-// TODO: Comentarios
+// TODO: Comentarios, ortografía.
 
 import promptSync from "prompt-sync";
 const prompt = promptSync({ sigint: true });
@@ -37,7 +37,7 @@ function analizarCadena(texto) {
 
   // Requisito
   console.log(
-    `El texto (Sin espacios) tiene un total de ${textoLenSinEspacios} caractares`,
+    `El texto (Sin espacios) tiene un total de ${textoLenSinEspacios} caracteres`,
   );
   console.log(`El texto tiene un total de ${totalVocales} vocales`);
 
@@ -45,7 +45,7 @@ function analizarCadena(texto) {
     console.log("No hubo repetidos");
   } else {
     console.log(
-      `El caracter más repetido es "${charMasRepetido}" con un total de "${charAux}" repeticiones`,
+      `El carácter más repetido es "${charMasRepetido}" con un total de "${charAux}" repeticiones`,
     );
   }
 }
